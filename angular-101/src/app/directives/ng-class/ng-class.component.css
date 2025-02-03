@@ -1,0 +1,14 @@
+.large
+{
+    font-size: 30px;
+}
+
+.redBox
+{
+    background-color: red;
+}
+
+.blueBorder
+{
+    border: 10px solid blue;
+}
