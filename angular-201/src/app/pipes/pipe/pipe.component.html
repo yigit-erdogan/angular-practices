@@ -1,0 +1,65 @@
+<h3>Json Pipes</h3>
+<p>{{person1 | json}}</p>
+<p>{{person2 | json}}</p>
+
+<hr>
+
+<h3>UpperCase/LowerCase Pipes</h3>
+<p>{{'angular uppercase' | uppercase}}</p>
+<p>{{'ANGULAR LOWERCASE' | lowercase}}</p>
+<p>{{'angular titlecase' | titlecase}}</p>
+<p>{{person1.firstName | titlecase}} {{person1.lastName | uppercase}}</p>
+
+<hr>
+
+<h3>Date Pipes</h3>
+<p>{{myDate | date:'d/M/y'}}</p>
+<p>{{myDate | date:'dd/MM/yyyy'}}</p>
+<p>{{myDate | date:'dd-MM-yyyy'}}</p>
+<p>{{myDate | date:'dd.MM.yyyy'}}</p>
+
+<p>{{myDate | date:'fullDate'}}</p>
+<p>{{myDate | date:'longDate'}}</p>
+<p>{{myDate | date:'shortTime'}}</p>
+
+<hr>
+
+<h3>Currency Pipes</h3>
+<p>{{price | currency}}</p>
+<p>{{price | currency:'EUR'}}</p>
+
+<hr>
+
+<h3>Decimal Pipes</h3>
+<p>{{5.123456789 | number}}</p>
+<p>{{5.123456789 | number:'1.0-5'}}</p>
+<p>{{5.123456789 | number:'1.0-0'}}</p>
+<p>{{5 | number:'1.1-5'}}</p>
+<p>{{5 | number:'1.2-5'}}</p>
+<p>{{5 | number:'3.0-5'}}</p>
+
+<hr>
+
+<h3>Slice Pipes</h3>
+<p>{{'Angular' | slice:0:3}}</p>
+<p>{{'Angular' | slice:3:5}}</p>
+<p>{{'Angular' | slice:5:7}}</p>
+<p>{{[0,1,2,3,4,5] | slice:0:3}}</p>
+<p>{{[0,1,2,3,4,5] | slice:2:4}}</p>
+<p>{{[0,'ali',2,'veli',4,5] | slice:0:5}}</p>
+
+<hr>
+
+<h3>Percent Pipes</h3>
+<p>{{0.12345 | percent}}</p>
+<p>{{0.12345 | percent:'1.0-1'}}</p>
+<p>{{0.12345 | percent:'1.0-3'}}</p>
+<p>{{0.12345 | percent:'3.0-3'}}</p>
+
+<hr>
+
+<h3>Custom Upper Pipes</h3>
+<p>{{person1.firstName | upper}}</p>
+
+
+
