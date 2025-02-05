@@ -1,0 +1,37 @@
+<h3>Template-Driven</h3>
+
+<h3>Interface ile </h3>
+<form #saveForm="ngForm" (ngSubmit)="save(saveForm)">
+    <label for="userName">Username: </label>
+    <input type="text" name="userName2" [ngModel]="loginModel.userName">
+    <br>
+    <label for="userName">Password: </label>
+    <input type="password" name="password2" [ngModel]="loginModel.password">
+    <br>
+    <label for="rememberMe2">Remember Me: </label>
+    <input type="checkbox" name="rememberMe2" [ngModel]="loginModel.rememberMe">
+    <br>
+    <button type="submit">Giriş</button>
+</form>
+
+
+
+
+
+<!--
+
+<h3>Class ile </h3>
+<form #saveForm="ngForm" (ngSubmit)="save(saveForm)">
+    <label for="userName">Username: </label>
+    <input type="text" name="userName2" [ngModel]="loginModel2.userName">
+    <br>
+    <label for="userName">Password: </label>
+    <input type="password" name="password2" [ngModel]="loginModel2.password">
+    <br>
+    <label for="rememberMe2">Remember Me: </label>
+    <input type="checkbox" name="rememberMe2" [ngModel]="loginModel2.rememberMe">
+    <br>
+    <button type="submit">Giriş</button>
+</form>
+
+-->

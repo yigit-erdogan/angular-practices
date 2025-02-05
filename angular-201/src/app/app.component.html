@@ -1,5 +1,12 @@
 <router-outlet></router-outlet>
 <h1>Ana Component</h1>
 
-<h3>Pipe component</h3>
-<app-pipe></app-pipe>
+<h3>Konsola Yazdırma</h3>
+<input #name type="text">
+<button (click)="save(name.value)">Konsola Yaz</button>
+
+<hr>
+
+<app-template-driven></app-template-driven>
+
+
