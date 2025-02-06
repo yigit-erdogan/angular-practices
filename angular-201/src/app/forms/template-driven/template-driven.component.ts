@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-template-driven',
@@ -9,11 +9,14 @@ import { NgForm } from '@angular/forms';
 export class TemplateDrivenComponent {
 
   loginModel: loginModel;
-  loginModel2: loginModelC;
+  countryMenu: countryDropMenu[] = [{text:"Seçiniz",value:0},{text:"Türkiye",value:1},{text:"Almanya",value:2},{text:"Fransa",value:3}]
+  genderMenu: genderRadioMenu[] = [{text:"Erkek",value:1},{text:"Kadın",value:2}]
+  
+  // loginModel2: loginModelC;
   constructor()
   {
-    this.loginModel = { userName: "", password: "", rememberMe:false}
-    this.loginModel2 = new loginModelC();
+    this.loginModel = { userName: "", password: "", rememberMe:false, country:0, gender:0}
+    // this.loginModel2 = new loginModelC();
     
   }
 
@@ -22,14 +25,54 @@ export class TemplateDrivenComponent {
     console.log(form.value);
   }
 
+  countryChange(value:any)
+  {
+    console.log(value);
+  }
 
+  genderChange(value:any)
+  {
+    console.log(value);
+  }
+
+  manuelChange(value:any)
+  {
+    console.log(value);
+  }
+
+  isValid(model:FormControl):boolean
+  {
+    if ( !(model.invalid && (model.dirty || model.touched ||  model.errors?.['minlength'])) ) return false
+
+    return true
+  }
+
+  isSuccesValid(model:FormControl):boolean
+  {
+    return model.valid && (model.dirty || model.touched ||  model.errors?.['minlength'])
+  }
+
+}
+
+interface genderRadioMenu
+{
+  text:string,
+  value:number
+}
+
+interface countryDropMenu
+{
+  text:string,
+  value:number
 }
 
 interface loginModel
 {
   userName:string,
   password:string,
-  rememberMe: boolean
+  rememberMe: boolean,
+  country:number,
+  gender:number
 }
 
 class loginModelC
@@ -45,8 +88,5 @@ class loginModelC
     this.rememberMe=rememberMe;
   }
 */
-
-
-
 
 }
