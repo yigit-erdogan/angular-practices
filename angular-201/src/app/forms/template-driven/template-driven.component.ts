@@ -42,7 +42,10 @@ export class TemplateDrivenComponent {
 
   isValid(model:FormControl):boolean
   {
-    if ( !(model.invalid && (model.dirty || model.touched ||  model.errors?.['minlength'])) ) return false
+    if ( !(model.invalid && (model.dirty || model.touched)) ) return false
+
+    if (model.errors?.['required']) return true
+    if (model.errors?.['minlength']) return true
 
     return true
   }

@@ -1,19 +1,23 @@
+<div class="row">
+<div class="offset-md-2 col-md-8">
+
 <h3>Template-Driven</h3>
 
 <h3>Interface ile </h3>
+
 <form #saveForm="ngForm" (ngSubmit)="save(saveForm)">
-    <label for="userName">Username: </label>
-    <input #userNameInput="ngModel" type="text" name="userName2" [ngModel]="loginModel.userName" required minlength="4" maxlength="20">
-    
-    <div *ngIf="userNameInput.invalid && (userNameInput.dirty || userNameInput.touched)">
-        <small style="color: red;" *ngIf="userNameInput.errors?.['required']">Username alanı boş bırakılamaz</small>
+
+    <div class="mb-3">
+        <label for="userName" class="form-label">Username: </label>
+        <input #userNameInput="ngModel" type="text" name="userName2" class="form-control" [ngModel]="loginModel.userName" required minlength="4" maxlength="20">
+    </div>
+
+    <div class="alert alert-danger" *ngIf="userNameInput.invalid && (userNameInput.dirty || userNameInput.touched)">
+        <small *ngIf="userNameInput.errors?.['required']">Username alanı boş bırakılamaz</small>
+        <small *ngIf="userNameInput.errors?.['minlength']">Username minimum 4 karakter olmalıdır</small>
     </div>
     
-    <div *ngIf="userNameInput.invalid && (userNameInput.dirty || userNameInput.touched)">
-        <small style="color: red;" *ngIf="userNameInput.errors?.['minlength']">Username minimum 4 karakter olmalıdır</small>
-    </div>
-    
-    <div style="border: 3px solid red; padding:10px">
+    <div class="alert alert-info">
         <ul>
             <li>Valid: {{userNameInput.valid}}</li>
             <li>Invalid: {{userNameInput.invalid}}</li>
@@ -27,19 +31,21 @@
 
     <br>
 
-    <label for="userName">Password: </label>
-    <!--<input type="password" name="password2" [ngModel]="loginModel.password"> -->
-    <input [ngClass]="{invalidRed:isValid(passwordInput.control), validGreen:isSuccesValid(passwordInput.control)}" #passwordInput="ngModel" type="password" name="password" [ngModel]="loginModel.password" required minlength="5">
-    
-    <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
-        <small style="color: red;" *ngIf="passwordInput.errors?.['required']">Password alanı boş bırakılamaz</small>
+    <div class="mb-3">
+
+        <label class="form-label" for="userName">Password: </label>
+        <!--<input type="password" name="password2" [ngModel]="loginModel.password"> -->
+        <input class="form-control" [ngClass]="{invalidRed:isValid(passwordInput.control), validGreen:isSuccesValid(passwordInput.control)}" #passwordInput="ngModel" type="password" name="password" [ngModel]="loginModel.password" required minlength="5">
+
     </div>
     
-    <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
-        <small style="color: red;" *ngIf="passwordInput.errors?.['minlength']">Password minimum 5 karakter olmalıdır</small>
-    </div>
     
-    <div style="border: 3px solid red; padding:10px">
+    <div class="alert alert-danger" *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
+        <small *ngIf="passwordInput.errors?.['required']">Password alanı boş bırakılamaz</small>
+        <small *ngIf="passwordInput.errors?.['minlength']">Password minimum 5 karakter olmalıdır</small>
+    </div>
+
+    <div class="alert alert-info">
         <ul>
             <li>Valid: {{passwordInput.valid}}</li>
             <li>Invalid: {{passwordInput.invalid}}</li>
@@ -62,10 +68,17 @@
     </select>
     <br>
     -->
-    <label for="country2">Ülke: </label>
-    <select (ngModelChange)="countryChange($event)" name="country2" [ngModel]="loginModel.country">
+
+    <label class="form-label" for="country2">Ülke: </label>
+    <select class="form-select" (ngModelChange)="countryChange($event)" name="country2" [ngModel]="loginModel.country">
+        
         <option *ngFor="let item of countryMenu" value="{{item.value}}">{{item.text}}</option>
     </select>
+
+    <!-- <label for="country2">Ülke: </label>
+    <select (ngModelChange)="countryChange($event)" name="country2" [ngModel]="loginModel.country">
+        <option *ngFor="let item of countryMenu" value="{{item.value}}">{{item.text}}</option>
+    </select> -->
 
     <br>
 
@@ -78,16 +91,25 @@
     </select> 
     <br>
     -->
-    <div *ngFor="let item of genderMenu">
-        <input (ngModelChange)="genderChange($event)" [ngModel]="loginModel.gender" type="radio" name="gender" [value]="item.value"> {{item.text}}
+    <div class="form-check" *ngFor="let item of genderMenu">
+        <input class="form-check-input" (ngModelChange)="genderChange($event)" [ngModel]="loginModel.gender" type="radio" name="gender" [value]="item.value">
+        {{item.text}}
     </div>
-    <label for="rememberMe2">Remember Me: </label>
-    <input type="checkbox" name="rememberMe2" [ngModel]="loginModel.rememberMe">
+
+    <br>
+
+    <div class="form-chech">
+        <label class="form-check-label" for="rememberMe2">Remember Me</label>
+        <input class="form-check-input ms-2" type="checkbox" id="rememberMe2" name="rememberMe2" [ngModel]="loginModel.rememberMe">
+    </div>
     
     <br>
 
-    <button type="submit">Giriş</button>
+    <button type="submit" class="btn btn-primary">Login</button>
 </form>
+
+</div>
+</div>
 
 <!--
 <h3>Class ile </h3>
