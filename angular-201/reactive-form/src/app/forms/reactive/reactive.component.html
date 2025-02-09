@@ -1,0 +1,113 @@
+<div class="row">
+<div class="offset-md-2 col-md-8">
+
+    <form [formGroup]="loginForm" (ngSubmit)="signin()">
+        <div class="mb-3">
+            <label for="userName" class="form-label">Username: </label>
+            <input class="form-control" type="text" formControlName="userName">
+        </div>
+
+        <div class="alert alert-danger mt-3" *ngIf="isInValidMessageShow('userName')">
+            <small *ngIf="loginForm.get('userName')?.errors?.['required']">Username alanı boş bırakılamaz</small>
+            <small *ngIf="loginForm.get('userName')?.errors?.['minlength']">Username minimum 4 karakter olmalıdır</small>
+        </div>
+
+        <div class="alert alert-info mt-3">
+            <ul>
+                <li>Valid: {{loginForm.get("userName")?.valid}}</li>
+                <li>Invalid: {{loginForm.get("userName")?.invalid}}</li>
+                <li>Errors: {{loginForm.get("userName")?.errors | json}}</li>
+                <li>Dirty: {{loginForm.get("userName")?.dirty}}</li>
+                <li>Touched: {{loginForm.get("userName")?.touched}}</li>
+                <li>UnTouched: {{loginForm.get("userName")?.untouched}}</li>
+                <li>Value: {{loginForm.get("userName")?.value}}</li>
+            </ul>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Password: </label>
+            <input class="form-control" type="password" formControlName="password" [ngClass]="{invalidRed:isValid('password'), validGreen:isSuccesValid('password')}">
+        </div>
+
+        <div class="alert alert-danger" *ngIf="isInValidMessageShow('password')">
+            <small *ngIf="loginForm.get('password')?.errors?.['required']">Password alanı boş bırakılamaz</small>
+            <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Password minimum 5 karakter olmalıdır</small>
+        </div>
+
+        <div class="alert alert-info mt-3">
+            <ul>
+                <li>Valid: {{loginForm.get("password")?.valid}}</li>
+                <li>Invalid: {{loginForm.get("password")?.invalid}}</li>
+                <li>Errors: {{loginForm.get("password")?.errors | json}}</li>
+                <li>Dirty: {{loginForm.get("password")?.dirty}}</li>
+                <li>Touched: {{loginForm.get("password")?.touched}}</li>
+                <li>UnTouched: {{loginForm.get("password")?.untouched}}</li>
+                <li>Value: {{loginForm.get("password")?.value}}</li>
+            </ul>
+        </div> 
+
+        <label class="form-label mt-3" for="country">Ülke: </label>
+        <select class="form-select" formControlName="country">
+            <option value="">Seçiniz</option>
+            <option *ngFor="let item of countryMenu" value="{{item.value}}">{{item.text}}</option>
+        </select>
+
+        <div class="alert alert-danger mt-3" *ngIf="isInValidMessageShow('country')">
+            <small *ngIf="loginForm.get('country')?.errors?.['required']">Ülke seçimi boş bırakılamaz</small>
+        </div>
+
+        <div class="alert alert-info mt-3">
+            <ul>
+                <li>Valid: {{loginForm.get("country")?.valid}}</li>
+                <li>Invalid: {{loginForm.get("country")?.invalid}}</li>
+                <li>Errors: {{loginForm.get("country")?.errors | json}}</li>
+                <li>Dirty: {{loginForm.get("country")?.dirty}}</li>
+                <li>Touched: {{loginForm.get("country")?.touched}}</li>
+                <li>UnTouched: {{loginForm.get("country")?.untouched}}</li>
+                <li>Value: {{loginForm.get("country")?.value}}</li>
+            </ul>
+        </div>
+
+        <div class="form-check mt-3" *ngFor="let item of genderMenu">
+            <input class="form-check-input" type="radio" [value]="item.value" formControlName="gender">{{item.text}}
+        </div>
+
+        <div class="alert alert-info mt-3">
+            <ul>
+                <li>Valid: {{loginForm.get("gender")?.valid}}</li>
+                <li>Invalid: {{loginForm.get("gender")?.invalid}}</li>
+                <li>Errors: {{loginForm.get("gender")?.errors | json}}</li>
+                <li>Dirty: {{loginForm.get("gender")?.dirty}}</li>
+                <li>Touched: {{loginForm.get("gender")?.touched}}</li>
+                <li>UnTouched: {{loginForm.get("gender")?.untouched}}</li>
+                <li>Value: {{loginForm.get("gender")?.value}}</li>
+            </ul>
+        </div>
+
+        <div>
+            <label for="birthDate">Doğum Tarihi:</label>
+            <input class="form-control" type="date" formControlName="birthDate" name="birthDate">
+        </div>
+
+        <div class="alert alert-info mt-3">
+            <ul>
+                <li>Valid: {{loginForm.get("birthDate")?.valid}}</li>
+                <li>Invalid: {{loginForm.get("birthDate")?.invalid}}</li>
+                <li>Errors: {{loginForm.get("birthDate")?.errors | json}}</li>
+                <li>Dirty: {{loginForm.get("birthDate")?.dirty}}</li>
+                <li>Touched: {{loginForm.get("birthDate")?.touched}}</li>
+                <li>UnTouched: {{loginForm.get("birthDate")?.untouched}}</li>
+                <li>Value: {{loginForm.get("birthDate")?.value}}</li>
+            </ul>
+        </div>
+
+        <div class="form-chech mt-3">
+            <label class="form-check-label" for="rememberMe">Remember Me</label>
+            <input class="form-check-input ms-2" type="checkbox" formControlName="rememberMe">
+        </div>
+
+        <button class="btn btn-primary mt-3" type="submit">Giriş</button>
+    </form>
+
+</div>
+</div>

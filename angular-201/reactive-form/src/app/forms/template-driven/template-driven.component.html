@@ -1,0 +1,126 @@
+<div class="row">
+<div class="offset-md-2 col-md-8">
+
+<h3>Template-Driven</h3>
+
+<h3>Interface ile </h3>
+
+<form #saveForm="ngForm" (ngSubmit)="save(saveForm)">
+
+    <div class="mb-3">
+        <label for="userName" class="form-label">Username: </label>
+        <input #userNameInput="ngModel" type="text" name="userName" class="form-control" [ngModel]="loginModel.userName" required minlength="4" maxlength="20">
+    </div>
+
+    <div class="alert alert-danger" *ngIf="userNameInput.invalid && (userNameInput.dirty || userNameInput.touched)">
+        <small *ngIf="userNameInput.errors?.['required']">Username alanı boş bırakılamaz</small>
+        <small *ngIf="userNameInput.errors?.['minlength']">Username minimum 4 karakter olmalıdır</small>
+    </div>
+    
+    <div class="alert alert-info">
+        <ul>
+            <li>Valid: {{userNameInput.valid}}</li>
+            <li>Invalid: {{userNameInput.invalid}}</li>
+            <li>Errors: {{userNameInput.errors | json}}</li>
+            <li>Dirty: {{userNameInput.dirty}}</li>
+            <li>Touched: {{userNameInput.touched}}</li>
+            <li>UnTouched: {{userNameInput.untouched}}</li>
+            <li>Value: {{userNameInput.value}}</li>
+        </ul>
+    </div>
+
+    <br>
+
+    <div class="mb-3">
+
+        <label class="form-label" for="userName">Password: </label>
+        <!--<input type="password" name="password" [ngModel]="loginModel.password"> -->
+        <input class="form-control" [ngClass]="{invalidRed:isValid(passwordInput.control), validGreen:isSuccesValid(passwordInput.control)}" #passwordInput="ngModel" type="password" name="password" [ngModel]="loginModel.password" required minlength="5">
+
+    </div>
+    
+    
+    <div class="alert alert-danger" *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
+        <small *ngIf="passwordInput.errors?.['required']">Password alanı boş bırakılamaz</small>
+        <small *ngIf="passwordInput.errors?.['minlength']">Password minimum 5 karakter olmalıdır</small>
+    </div>
+
+    <div class="alert alert-info">
+        <ul>
+            <li>Valid: {{passwordInput.valid}}</li>
+            <li>Invalid: {{passwordInput.invalid}}</li>
+            <li>Errors: {{passwordInput.errors | json}}</li>
+            <li>Dirty: {{passwordInput.dirty}}</li>
+            <li>Touched: {{passwordInput.touched}}</li>
+            <li>UnTouched: {{passwordInput.untouched}}</li>
+            <li>Value: {{passwordInput.value}}</li>
+        </ul>
+    </div>
+
+    <br>
+
+    <!-- <label for="country">Ülke: </label>
+    <select name="country" [ngModel]="loginModel.country">
+        <option value="0">Seçiniz</option>
+        <option value="1">Türkiye</option>
+        <option value="2">Almanya</option>
+        <option value="3">Fransa</option>
+    </select>
+    <br>
+    -->
+
+    <label class="form-label" for="country">Ülke: </label>
+    <select class="form-select" (ngModelChange)="countryChange($event)" name="country" [ngModel]="loginModel.country">
+        
+        <option *ngFor="let item of countryMenu" value="{{item.value}}">{{item.text}}</option>
+    </select>
+
+    <!-- <label for="country">Ülke: </label>
+    <select (ngModelChange)="countryChange($event)" name="country" [ngModel]="loginModel.country">
+        <option *ngFor="let item of countryMenu" value="{{item.value}}">{{item.text}}</option>
+    </select> -->
+
+    <br>
+
+    <!-- 
+    <label for="mymanuelselect">Seçim: </label>
+    <select #mymanuelchange (change)="manuelChange(mymanuelchange.value)" name="selectChange" >
+        <option value="1">Seçim 1</option>
+        <option value="2">Seçim 2</option>
+        <option value="3">Seçim 3</option>
+    </select> 
+    <br>
+    -->
+    <div class="form-check" *ngFor="let item of genderMenu">
+        <input class="form-check-input" (ngModelChange)="genderChange($event)" [ngModel]="loginModel.gender" type="radio" name="gender" [value]="item.value">
+        {{item.text}}
+    </div>
+
+    <br>
+
+    <div class="form-chech">
+        <label class="form-check-label" for="rememberMe">Remember Me</label>
+        <input class="form-check-input ms-2" type="checkbox" id="rememberMe" name="rememberMe" [ngModel]="loginModel.rememberMe">
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Login</button>
+</form>
+
+</div>
+</div>
+
+<!--
+<h3>Class ile </h3>
+<form #saveForm="ngForm" (ngSubmit)="save(saveForm)">
+    <label for="userName">Username: </label>
+    <input type="text" name="userName" [ngModel]="loginModel2.userName">
+    <br>
+    <label for="userName">Password: </label>
+    <input type="password" name="password" [ngModel]="loginModel2.password">
+    <br>
+    <label for="rememberMe">Remember Me: </label>
+    <input type="checkbox" name="rememberMe" [ngModel]="loginModel2.rememberMe">
+    <br>
+    <button type="submit">Giriş</button>
+</form>
+-->
