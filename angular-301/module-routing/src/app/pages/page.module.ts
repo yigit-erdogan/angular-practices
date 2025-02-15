@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { SecondPageComponent } from './second-page/second-page.component';
 import { PageServiceService } from './page-service.service';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 
@@ -10,6 +11,7 @@ import { PageServiceService } from './page-service.service';
   declarations: [
     FirstPageComponent,
     SecondPageComponent,
+    HomePageComponent,
   ],
   imports: [
     CommonModule,

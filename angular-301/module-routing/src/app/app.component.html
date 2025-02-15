@@ -1,6 +1,8 @@
+<ul>
+    <li><a routerLink="/homepage">Ana sayfa</a></li>
+    <li><a routerLink="/firstpage" [queryParams]="{page:2,pageSize:1}">Birinci sayfa</a></li>
+    <li><a routerLink="/secondpage/2">İkinci sayfa type1</a></li>
+    <li><a [routerLink]="['secondpage',3]">İkinci sayfa type2</a></li>
+</ul>
+
 <router-outlet></router-outlet>
-<h1>Ana Component</h1>
-
-
-<app-first-page></app-first-page>
-<app-second-page></app-second-page>
