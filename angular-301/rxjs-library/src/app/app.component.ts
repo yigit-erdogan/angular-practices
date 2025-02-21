@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { concatMap, defer, delay, distinct, filter, find, first, from, fromEvent, interval, last, map, mapTo, mergeMap, Observable, of, range, reduce, single, skip, skipUntil, skipWhile, switchMap, take, takeLast, takeWhile, timer, toArray } from 'rxjs';
+import { catchError, concatMap, defer, delay, distinct, filter, find, first, from, fromEvent, interval, last, map, mapTo, mergeMap, Observable, of, range, reduce, retry, single, skip, skipUntil, skipWhile, switchMap, take, takeLast, takeWhile, tap, timer, toArray } from 'rxjs';
 import { MultipleSubscribersService } from './multiple-subscribers.service';
+import { ajax } from 'rxjs/ajax';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,37 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    // catchError operator example
+    // var myData = interval(1000).pipe(map(val=>{
+
+    //   if(val>6)
+    //   {
+    //     throw "değer 6'dan büyük olamaz!"
+    //   }
+    //   return val;
+
+    // }),
+    // catchError(e=>of(e)))
+
+
+    // myData.subscribe({
+    //   next:(val)=>{console.log(val)},
+    //   error:(e)=>{console.log("bu hata subscribe tarafında ele alındı!")},
+    // })
+
+    //retry operator example
+    // ajax.getJSON('https://jsonplaceholder.typicode.com/todos/1').pipe(retry(3)).subscribe(x=>{
+    //   console.log(x);
+    // },
+    //   ()=>{console.log("Data çekilemedi!");
+    // })
+
+    // tap operator example
+    // var numberArray = of(1,2,3,4,5);
+    // numberArray.pipe(tap(x=>console.log(`${x} data geldi!`))).subscribe(x=>{
+    //   console.log(x);
+    // })
 
     // reduce operator example
     // var numberArray = of(1,2,3,4,5);
