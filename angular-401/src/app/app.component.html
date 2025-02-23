@@ -1,0 +1,26 @@
+<h1>Ana component</h1>
+
+<!-- <h2>interface ile</h2>
+<p>userId: {{user?.userId}}</p>
+<p>id: {{user?.id}}</p>
+<p>title: {{user?.title}}</p>
+<p>completed: {{user?.completed}}</p>
+<hr>
+<h2>class ile</h2>
+<p>userId: {{user2?.userId}}</p>
+<p>id: {{user2?.id}}</p>
+<p>title: {{user2?.title}}</p>
+<p>completed: {{user2?.completed}}</p> -->
+
+<div class="alert alert-info" *ngFor="let post of postList">
+    userId: {{post.userId}}
+    id: {{post.id}}
+    title: {{post.title}}
+    body: {{post.body}}
+
+</div>
+
+
+
+
+<router-outlet></router-outlet>
