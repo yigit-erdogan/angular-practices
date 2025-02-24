@@ -1,5 +1,19 @@
 <h1>Ana component</h1>
 
+<app-first></app-first>
+
+<hr>
+
+<div *ngIf="isLoadingShow">
+<div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
+
+
+
 <!-- <h2>interface ile</h2>
 <p>userId: {{user?.userId}}</p>
 <p>id: {{user?.id}}</p>
